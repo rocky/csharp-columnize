@@ -30,7 +30,7 @@ namespace Columnize
 			var rowcolData = MinRowsAndColwidths (data, opts);
 			int[] expect = {2,2,2,2,2,2,2,2,2,2};
 			Assert.AreEqual(expect, rowcolData.widths,
-					"colwidths - vertical");
+					"colwidths - horizontal");
 			Assert.AreEqual(10, rowcolData.data.GetLength(0),
 			                "number of rows - vertical");
 			Assert.AreEqual(6, rowcolData.data[0].GetLength(0),

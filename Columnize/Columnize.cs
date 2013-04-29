@@ -184,10 +184,10 @@ namespace Columnize
 			// Loop from most compact arrangement to least compact, stopping
 			// at the first successful packing.  The below code is tricky,
 			// but very cool.
+			Arrangement<int> intArrange = new Arrangement<int>();
 			if (this.opts.ArrangeVertical) {
 				for (int size=1; size <= list.Length; size++) {
 					int other_size = (list.Length + size - 1) / size;
-					Arrangement<int> intArrange = new Arrangement<int>();
 					int[][] cell_width2d = intArrange.ArrangeByRow(cell_widths, other_size, size);
 					int[] colwidths = new int[other_size];
 					for (int i=0; i<cell_width2d.GetLength(0); i++) {
@@ -210,7 +210,6 @@ namespace Columnize
 			} else {
 				for (int size=list.Length; size >= 1; size--) {
 					int other_size = (list.Length + size - 1) / size;
-					Arrangement<int> intArrange = new Arrangement<int>();
 					int[][] cell_width2d = intArrange.ArrangeByColumn(cell_widths, other_size, size);
 					int[] colwidths = new int[size];
 					for (int i=0; i<cell_width2d.GetLength(0); i++)  {
