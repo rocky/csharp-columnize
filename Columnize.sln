@@ -5,9 +5,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Columnize", "Columnize\Colu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo", "Demo\Demo.csproj", "{67F9E4C6-05E4-4625-BB27-8F0254395C0C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sandbox", "Sandbox\Sandbox.csproj", "{67F9E4C6-05E4-4625-BB27-8F0254395C0D}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{6F4BD02F-48F2-4415-8EDD-603F8125506A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sandbox", "Sandbox\Sandbox.csproj", "{67F9E4C6-05E4-4625-BB27-8F0254395C0D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,6 +19,10 @@ Global
 		{67F9E4C6-05E4-4625-BB27-8F0254395C0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{67F9E4C6-05E4-4625-BB27-8F0254395C0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{67F9E4C6-05E4-4625-BB27-8F0254395C0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67F9E4C6-05E4-4625-BB27-8F0254395C0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67F9E4C6-05E4-4625-BB27-8F0254395C0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67F9E4C6-05E4-4625-BB27-8F0254395C0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67F9E4C6-05E4-4625-BB27-8F0254395C0D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6F4BD02F-48F2-4415-8EDD-603F8125506A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6F4BD02F-48F2-4415-8EDD-603F8125506A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F4BD02F-48F2-4415-8EDD-603F8125506A}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -31,7 +35,6 @@ Global
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItems = $0
 		$0.Item = Demo\Demo.csproj
-		$0.Item = Sandbox\Sandbox.csproj
 		description = Arrange an Array nicely in columns
 	EndGlobalSection
 EndGlobal
