@@ -34,14 +34,5 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/home/rocky/net/Columnize/Test/MinRowsTest.cs" line="42" />
-      <Breakpoint file="/home/rocky/net/Columnize/Test/BasicTest.cs" line="29" />
-      <Breakpoint file="/home/rocky/net/Columnize/Sandbox/Sandbox.cs" line="44" />
-      <Breakpoint file="/home/rocky/net/Columnize/Sandbox/Sandbox.cs" line="34" />
-      <Breakpoint file="/home/rocky/net/Columnize/Columnize/Columnize.cs" line="221" />
-    </BreakpointStore>
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>
