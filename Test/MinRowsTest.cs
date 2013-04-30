@@ -21,7 +21,7 @@ namespace Columnize
 			for (int i=0; i<55; i++) {
 				data [i] = i.ToString ();
 			}
-			var opts = new Opts.Opts ();
+			var opts = Opts.Opts.DefaultOpts ();
 			opts.DisplayWidth = 39;
 			opts.ColSep = "  ";
 			// horizontal
@@ -31,9 +31,9 @@ namespace Columnize
 			int[] expect = {2,2,2,2,2,2,2,2,2,2};
 			Assert.AreEqual(expect, rowcolData.widths,
 					"colwidths - horizontal");
-			Assert.AreEqual(10, rowcolData.data.GetLength(0),
+			Assert.AreEqual(6, rowcolData.data.GetLength(0),
 			                "number of rows - vertical");
-			Assert.AreEqual(6, rowcolData.data[0].GetLength(0),
+			Assert.AreEqual(10, rowcolData.data[0].GetLength(0),
 			                "number of cols - horizontal");
 			// vertical
 			opts.ArrangeVertical = true;

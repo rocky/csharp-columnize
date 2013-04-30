@@ -48,23 +48,23 @@ namespace Columnize
 			/// </param>
 			public T [][] ArrangeByRow (T[] list, int nrows, int ncols)
 			{
-				T [][] rows = new T[nrows][];
+				T [][] data = new T[nrows][];
 				int allocated = 0;
 				for (int i=0; i<nrows; i++) {
 					int len = ncols;
-					if (allocated + nrows > list.Length) {
+					if (allocated + ncols > list.Length) {
 					  len = list.Length - allocated;
 					}
-					rows[i] = new T[len];
+					data[i] = new T[len];
 					allocated += len;
 					for (int j=0; j<len; j++) {
 						int k = (i * ncols) + j;
 						if (k >= list.Length)
 							break;
-						rows [i][j] = list [k];
+						data [i][j] = list [k];
 					}
 				}
-				return rows;
+				return data;
 			}
 
 			/// <summary>
@@ -88,25 +88,25 @@ namespace Columnize
 			/// <param name='ncols'>
 			/// number of columns in 2D Array.
 			/// </param>
-			public T[][] ArrangeByColumn (T[] list, int nrows, int ncols)
+			public T[][] ArrangeByColumn (T[] list, int ncols, int nrows)
 			{
-				T [][] rows = new T[nrows][];
+				T [][] data = new T[ncols][];
 				int allocated = 0;
-				for (int i=0; i<nrows; i++) {
-					int len = ncols;
-					if (allocated + ncols > list.Length) {
+				for (int i=0; i<ncols; i++) {
+					int len = nrows;
+					if (allocated + nrows > list.Length) {
 						len = list.Length - allocated;
 					}
-					rows[i] = new T[len];
+					data[i] = new T[len];
 					allocated += len;
 					for (int j=0; j<len; j++) {
-						int k = i + (j * nrows);
+						int k = i + (j * ncols);
 						if (k >= list.Length)
 							break;
-						rows [i][j] = list [k];
+						data [i][j] = list [k];
 					}
 				}
-				return rows;
+				return data;
 			}
 
 		}
@@ -203,28 +203,30 @@ namespace Columnize
 					if (totwidth <= this.opts.DisplayWidth) {
 					  Arrangement<string> strArrange = new Arrangement<string>();
 
-					  return new RowColData (strArrange.ArrangeByColumn(list, size, other_size),
+					  return new RowColData (strArrange.ArrangeByColumn(list, other_size, size),
 								 colwidths);
 					  }
 				}
 			} else {
 				for (int size=list.Length; size >= 1; size--) {
 					int other_size = (list.Length + size - 1) / size;
-					int[][] cell_width2d = intArrange.ArrangeByColumn(cell_widths, other_size, size);
-					int[] colwidths = new int[size];
-					for (int i=0; i<cell_width2d.GetLength(0); i++)  {
-						for (int j=0; j<cell_width2d[i].GetLength(0); j++) {
-							if (cell_width2d[i][j] > colwidths[i]) colwidths[i] = cell_width2d[i][j];
+					var cell_width2d = intArrange.ArrangeByRow(cell_widths, other_size, size);
+					var colwidths = new int[size];
+					for (int i=0; i<size; i++)  {
+						for (int j=0; j<other_size; j++) {
+							if (i >= cell_width2d[j].GetLength(0)) break;
+							if (cell_width2d[j][i] > colwidths[i]) colwidths[i] = cell_width2d[j][i];
 						}
 					}
 					int totwidth = colwidths[0];
+					// index 0 handled above
 					for (int i=1; i<size; i++)  {
 						totwidth += colwidths[i] + this.opts.ColSep.Length;
 					}
 					if (totwidth <= this.opts.DisplayWidth) {
 					  Arrangement<string> strArrange = new Arrangement<string>();
 
-					  return new RowColData (strArrange.ArrangeByRow(list, size, other_size),
+					  return new RowColData (strArrange.ArrangeByRow(list, other_size, size),
 								 colwidths);
 
 					  }
