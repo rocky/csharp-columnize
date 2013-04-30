@@ -127,6 +127,30 @@ namespace Columnize
 			this.opts = opts; // DEFAULT_OPTS.merge(opts)
 		}
 
+		delegate string row2line(string[] row);
+
+		static string RowsCols2Line (RowColData rowColData, Opts.Opts opts)
+		{
+			var colwidth = rowColData.widths;
+			var data     = rowColData.data;
+			string[] text = new string[data.GetLength(0)];
+			string alignment_prefix = opts.LeftJustify ? "-" : "";
+			for (int i=0;  i<data.GetLength (0); i++) {
+				for (int j=0; j<data[i].GetLength(0); j++) {
+					string alignment = alignment_prefix + colwidth[j].ToString();
+					string fmt = "{0," + alignment + "}";
+					data[i][j] = String.Format(fmt, data[i][j]);
+				}
+				text[i] = opts.LinePrefix + string.Join(opts.ColSep, data[i]) + opts.LineSuffix;
+
+
+			}
+
+			// text.first.sub!(/^#{@line_prefix}/, @array_prefix) unless @array_prefix.empty?
+			// text.last.sub!(/#{@line_suffix}$/, @array_suffix) unless @array_suffix.empty?
+			return string.Join("\n", text);
+		}
+
 		public static string columnize (string[] list, Opts.Opts opts)
 		{
 			if (list.Length == 0) {
@@ -141,11 +165,7 @@ namespace Columnize
 				opts.DisplayWidth -= opts.LinePrefix.Length;
 			}
 
-			var rowColData = new Columnize(list, opts).minRowsAndColwidths();
-			var colwidths = rowColData.widths;
-			var data      = rowColData.data;
-			return (opts.ArrangeVertical) ?
-				"vertical" : "horizontal";
+			return RowsCols2Line(new Columnize(list, opts).minRowsAndColwidths(), opts);
 		}
 
 		// Compute the smallest number of rows and the max widths for each column.

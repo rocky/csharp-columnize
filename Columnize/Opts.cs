@@ -22,6 +22,12 @@ namespace Columnize.Opts
 		/// The maximum number of characters that should exit before a newline in the string.
 		/// </summary>
 		public int DisplayWidth;
+
+		/// <summary>
+		/// Left justify the string?
+		/// </summary>
+		public Boolean LeftJustify;
+
 		/// <summary>
 		/// The string to add at the beginning of every line.
 		/// </summary>
@@ -59,7 +65,7 @@ namespace Columnize.Opts
 		/// </param>
 		public Opts (int DisplayWidth=80, Boolean ArrangeArray=false,
 		             string ColSep = "  ", string LinePrefix ="", string LineSuffix="",
-		             Boolean ArrangeVertical = true)
+		             Boolean ArrangeVertical = true, Boolean LeftJustify=true)
 		{
 			this.ArrangeArray = ArrangeArray;
 			this.ArrangeVertical = ArrangeVertical;
@@ -68,6 +74,7 @@ namespace Columnize.Opts
 			this.CellFmt = "%s";
 			this.ColSep = ColSep;
 			this.DisplayWidth = DisplayWidth;
+			this.LeftJustify = LeftJustify;
 			this.LinePrefix = LinePrefix;
 			this.LineSuffix = LineSuffix;
 		}

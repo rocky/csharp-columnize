@@ -6,6 +6,25 @@ namespace Columnize
 {
 	class MainClass
 	{
+		static string RowsCols2Line (string[][] data, int[] colwidth, Opts.Opts opts)
+		{
+			string[] text = new string[data.GetLength(0)];
+			string alignment_prefix = opts.LeftJustify ? "-" : "";
+			for (int i=0;  i<data.GetLength (0); i++) {
+				for (int j=0; j<data[i].GetLength(0); j++) {
+					string alignment = alignment_prefix + colwidth[j].ToString();
+					string fmt = "{0," + alignment + "}";
+					data[i][j] = String.Format(fmt, data[i][j]);
+				}
+				text[i] = opts.LinePrefix + string.Join(opts.ColSep, data[i]) + opts.LineSuffix;
+
+
+			}
+			// text.first.sub!(/^#{@line_prefix}/, @array_prefix) unless @array_prefix.empty?
+			// text.last.sub!(/#{@line_suffix}$/, @array_suffix) unless @array_suffix.empty?
+			return string.Join("\n", text);
+		}
+
 		static RowColData MinRowsAndColwidths (string[] list, Opts.Opts opts)
 		{
 			return new Columnize(list, opts).minRowsAndColwidths();
@@ -28,12 +47,13 @@ namespace Columnize
 			var opts = Opts.Opts.DefaultOpts();
 			opts.DisplayWidth = 39;
 			opts.ColSep = "  ";
+			opts.LeftJustify = false;
 			// horizontal
 			opts.ArrangeVertical = false;
 
 			var rowcolData = MinRowsAndColwidths (data, opts);
-			var got = rowcolData.data;
-			int[] expect = {2,2,2,2,2,2,2,2,2,2};
+
+			// int[] expect = {2,2,2,2,2,2,2,2,2,2};
 			// Assert.AreEqual(expect, rowcolData.widths,
 			// 		"colwidths - horizontal");
 			// Assert.AreEqual(10, rowcolData.data.GetLength(0),
@@ -41,7 +61,10 @@ namespace Columnize
 			// Assert.AreEqual(6, rowcolData.data[0].GetLength(0),
 			//                 "number of cols - horizontal");
 
-			var x = 1;
+			var data2d = rowcolData.data;
+			var result = RowsCols2Line(data2d, rowcolData.widths, opts);
+			Console.Write(result);
+
 			// var data = new string[11];
 			// for (int i=0; i<data.GetLength(0); i++) {
 			// 	data [i] = i.ToString ();
