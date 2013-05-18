@@ -28,7 +28,7 @@ namespace Columnize
 			  "2  6  10\n" +
 			  "3  7\n" +
 			  "4  8";
-			Console.WriteLine(got);
+			Console.WriteLine(got, expect);
 		}
 	}
 }
