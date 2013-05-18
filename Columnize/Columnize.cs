@@ -125,6 +125,14 @@ namespace Columnize
 		{
 			this.list = list;
 			this.opts = opts; // DEFAULT_OPTS.merge(opts)
+			if (opts.ArrangeArray) {
+				opts.ArrangeVertical = false;
+				opts.LeftJustify     = false;
+				opts.LineSuffix      = ",\n";
+				opts.LinePrefix      = " ";
+				opts.ColSep          = ", ";
+
+			}
 		}
 
 		delegate string row2line(string[] row);
@@ -133,7 +141,7 @@ namespace Columnize
 		{
 			var colwidth = rowColData.widths;
 			var data     = rowColData.data;
-			string[] text = new string[data.GetLength(0)];
+			string[] lines = new string[data.GetLength(0)];
 			string alignment_prefix = opts.LeftJustify ? "-" : "";
 			for (int i=0;  i<data.GetLength (0); i++) {
 				for (int j=0; j<data[i].GetLength(0); j++) {
@@ -141,14 +149,19 @@ namespace Columnize
 					string fmt = "{0," + alignment + "}";
 					data[i][j] = String.Format(fmt, data[i][j]);
 				}
-				text[i] = opts.LinePrefix + string.Join(opts.ColSep, data[i]) + opts.LineSuffix;
-
-
+				string prefix = opts.LinePrefix;
+				string suffix = opts.LineSuffix;
+				if (opts.ArrangeArray) {
+					if (0 == i) {
+						prefix= opts.ArrayPrefix;
+					} else if (data.Length == i+1) {
+						suffix = opts.ArraySuffix;
+					}
+				}
+				lines[i] = prefix + string.Join(opts.ColSep, data[i]) + suffix;
 			}
 
-			// text.first.sub!(/^#{@line_prefix}/, @array_prefix) unless @array_prefix.empty?
-			// text.last.sub!(/#{@line_suffix}$/, @array_suffix) unless @array_suffix.empty?
-			return string.Join("\n", text);
+			return string.Join("", lines);
 		}
 
 		public static string columnize (string[] list, Opts.Opts opts)
@@ -163,6 +176,14 @@ namespace Columnize
 				opts.DisplayWidth = opts.LinePrefix.Length + 4;
 			} else {
 				opts.DisplayWidth -= opts.LinePrefix.Length;
+			}
+
+			if (opts.ArrangeArray) {
+				opts.ArrangeVertical = false;
+				opts.LeftJustify     = false;
+				opts.LineSuffix      = ",\n";
+				opts.ColSep          = ", ";
+				opts.LinePrefix      = " ";
 			}
 
 			return RowsCols2Line(new Columnize(list, opts).minRowsAndColwidths(), opts);

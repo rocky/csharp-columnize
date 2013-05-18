@@ -64,7 +64,7 @@ namespace Columnize.Opts
 		/// If set to <c>true</c> arrange Array elements vertically rather than horizontally.
 		/// </param>
 		public Opts (int DisplayWidth=80, Boolean ArrangeArray=false,
-		             string ColSep = "  ", string LinePrefix ="", string LineSuffix="",
+		             string ColSep = "  ", string LinePrefix ="", string LineSuffix="\n",
 		             Boolean ArrangeVertical = true, Boolean LeftJustify=true)
 		{
 			this.ArrangeArray = ArrangeArray;
