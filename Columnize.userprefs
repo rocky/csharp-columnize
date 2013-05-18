@@ -1,25 +1,27 @@
 ﻿<Properties GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Columnize/Columnize.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Sandbox/Sandbox.cs">
     <Files>
       <File FileName="Demo/Main.cs" Line="6" Column="2" />
-      <File FileName="Columnize/Columnize.cs" Line="145" Column="1" />
+      <File FileName="Columnize/Columnize.cs" Line="168" Column="15" />
       <File FileName="Test/BasicTest.cs" Line="31" Column="3" />
       <File FileName="Test/MinRowsTest.cs" Line="47" Column="4" />
-      <File FileName="Columnize/Opts.cs" Line="12" Column="29" />
+      <File FileName="Columnize/Opts.cs" Line="68" Column="56" />
       <File FileName="Test/OptsTest.cs" Line="6" Column="2" />
-      <File FileName="Sandbox/Sandbox.cs" Line="44" Column="1" />
+      <File FileName="Sandbox/Sandbox.cs" Line="13" Column="47" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True" selected="True">
+        <State expanded="True">
           <Node name="Columnize" expanded="True">
             <Node name="References" expanded="True" />
           </Node>
           <Node name="Demo" expanded="True">
             <Node name="References" expanded="True" />
           </Node>
-          <Node name="Sandbox" expanded="True" />
+          <Node name="Sandbox" expanded="True">
+            <Node name="Sandbox.cs" selected="True" />
+          </Node>
           <Node name="Test" expanded="True" />
         </State>
       </Pad>
@@ -38,9 +40,7 @@
     <BreakpointStore>
       <Breakpoint file="/home/rocky/net/Columnize/Test/MinRowsTest.cs" line="42" />
       <Breakpoint file="/home/rocky/net/Columnize/Test/BasicTest.cs" line="29" />
-      <Breakpoint file="/home/rocky/net/Columnize/Sandbox/Sandbox.cs" line="44" />
-      <Breakpoint file="/home/rocky/net/Columnize/Sandbox/Sandbox.cs" line="34" />
-      <Breakpoint file="/home/rocky/net/Columnize/Columnize/Columnize.cs" line="221" />
+      <Breakpoint file="/home/rocky/net/Columnize/Sandbox/Sandbox.cs" line="11" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
